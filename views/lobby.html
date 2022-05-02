@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
-    <h2>Type here.</h2>
-    <div class="input-message">
-        <textarea name="message" id="from" cols="30" rows="10"></textarea><br>
-        <button id="send">Send</button>
-    </div>
+
     <div class="output-message">
-        <p>Message shown here.</p>
-        <p id="output"></p>
+        
+    </div>
+    <div class="input-message">
+        <input type="text" id="from">
+        <button id="send">Send</button>
     </div>
     <script src="socket.io/socket.io.js"></script>
     <script src="js/lobby.js"></script>

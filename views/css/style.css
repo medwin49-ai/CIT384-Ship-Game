@@ -1,3 +1,27 @@
 body{
     background-color:burlywood;
 }
+
+.user-input{
+    display: "none"
+}
+.mp{
+    display: "none";
+    text-decoration: none;
+}
+.spb{
+    display: "none"
+}
+
+.output-message{
+    height:300px;
+    width:200px;
+    overflow:auto;
+    border:2px solid;
+    padding:2%;
+    background-color: white;
+}
+
+#from{
+    width:210px;
+}
