@@ -6,7 +6,9 @@
     <title>Home Page </title>
     <!-- We're going to have to link our js here later -->
     <script scr="js/index.js"></script>
+    
     <!-- Link Our CSS here -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header class="masthead">
@@ -16,16 +18,19 @@
     <div class="homepageimage">
         <!--Probalby add the image of a our game here-->
     </div>
-
-    <div class="spbarea">
-        <p> Please Choose a game option: </p>
-         <button id="spb">Single Player!</button>
+    <div class="user-input">
+        <input type="text" id="user-id" placeholder="username">
+        <button id="user-button">Enter</button>
     </div>
+    <div class="spbarea">
+         <button id="spb" style= "display: none" ;>Single Player!</button>
+    </div><br>
     <div class="mparea">     
-            <a href="/lobby"><button id="mp"> Multiplayer!</button></a>
+            <a href="/roomlist"><button id="mp" style= "display: none"> Multiplayer!</button></a>
 
     </div>
 </main>
-
+<script src="socket.io/socket.io.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>

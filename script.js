@@ -6,7 +6,8 @@ const server = require("http").createServer(app);
 const io = require("socket.io")(server)
 const port = 3000
 
-let users = []
+
+
 app.use(express.static(path.join(__dirname  + "/views")));
 
 app.get("/", (req, res)=>{
@@ -16,30 +17,46 @@ app.get("/", (req, res)=>{
 
 app.get('/roomlist', (req, res) =>{
   res.sendFile(path.join(__dirname, "views/roomlist.html"))
+  
 })
 app.get("/lobby", (req, res)=>{
   res.sendFile(path.join(__dirname,"/views/lobby.html"))
 })
 
 
-io.on("connection" , (socket) =>{
-  console.log('new connection');
-  // socket.on("joinRoom" , ({id , room}) =>{
-  //   const user = userJoin(socket.id , username, room);
-  //   socket.emit('message' , formatMessage(id, 'welcome to the room.'))
-  // })
 
-  socket.on("new message", msg =>{
-    console.log("new message on the server: ", msg);
-    io.emit("incoming" , msg)
+// Socket.io section
+io.on("connection" , (socket) =>{
+  const users = []
+  socket.on("user-information",(username)=>{
+    const user = {
+      username,
+      id: socket.id,
+    };
+
+    users.push(user)
+    io.emit("new user" ,user)
+    console.log(users)
   })
+
+  socket.on("new message",( msg ,userid )=>{
+    console.log(userid + ": ", msg);
+    io.emit("incoming" , msg , userid)
+  });
 
   socket.on("disconnect", () => {
     console.log('disconnect')
-  })
+  });
 
 
-})
+
+  // socket.on("join room", (roomName , cb)=>{
+  //   socket.join(roomName);
+  //   cb(messages[roomName]);
+  // });
+
+
+});
 
 
 
